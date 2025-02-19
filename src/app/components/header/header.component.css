@@ -1,0 +1,126 @@
+.header {
+  width: 100%;
+  padding: 0 20px;
+  box-shadow: 0 3px 15px var(--shadow-color);
+}
+
+.header__wrapper {
+  min-height: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.navigation {
+  position: relative;
+  top: 0;
+  width: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: none;
+}
+
+.navigation__toggle {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 0;
+  background-color: var(--base-background-color);
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .navigation__toggle {
+    display: none;
+  }
+}
+
+.navigation__toggle::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 1px;
+  width: 40px;
+  height: 2px;
+  background-color: var(--base-text-color);
+  box-shadow: 0 10px 0 0 var(--base-text-color), 0 20px 0 0 var(--base-text-color);
+}
+
+.navigation--active .navigation__toggle::before,
+.navigation--active .navigation__toggle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 18px;
+  height: 40px;
+  width: 2px;
+  background-color: var(--base-text-color);
+  box-shadow: none;
+}
+.navigation--active .navigation__toggle:before {
+  transform: rotate(45deg);
+}
+.navigation--active .navigation__toggle:after {
+  transform: rotate(-45deg);
+}
+
+.navigation__list {
+  position: absolute;
+  top: 110px;
+  right: 10px;
+  width: 200px;
+  padding: 20px;
+  box-shadow: 0 3px 15px var(--shadow-color);
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: var(--base-background-color);
+}
+@media screen and (min-width: 768px) {
+  .navigation__list {
+    position: relative;
+    top: 0;
+    width: auto;
+    box-shadow: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 50px;
+  }
+}
+
+.navigation .navigation__list {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .navigation .navigation__list {
+    display: flex;
+  }
+}
+
+.navigation--active .navigation__list {
+  display: flex;
+}
+
+.navigation__link {
+  font-size: 15px;
+  color: var(--base-brown);
+  text-decoration: none;
+}
+
+.navigation__link:hover,
+.navigation__link:focus {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=header.component.css.map */

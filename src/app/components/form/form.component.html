@@ -1,0 +1,64 @@
+<section class="section order">
+  <div class="order__wrapper">
+    <div class="order__title__wrapper">
+      <h2 class="order__title">Хватит думать!<br/>
+        <span class="order__title--highlight">Доставим заказ за 30 минут!</span>
+      </h2>
+      <p class="order__text">Мы гарантированно доставим вашу пиццу за 30 минут с момента оформления заказа. Если мы опоздаем даже на 1 минуту - вы получаете весь заказ бесплатно и ваучер на скидку на следующий заказ. Мы гордимся нашим сервисом и сделаем всё, чтобы наш клиент был доволен и не остался голодный!</p>
+    </div>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="order__form"
+    >
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert">
+        <div *ngIf="name?.hasError('required')">
+          Пожалуйста, введите Ваше имя.
+        </div>
+      </div>
+      <label for="name" class="visually-hidden">Ваше имя</label>
+      <input
+        formControlName="name"
+        class="order__input"
+        type="text"
+        id="name"
+        placeholder="Ваше имя"
+        required
+        (keypress)="preventDot($event)"
+      />
+
+      <div *ngIf="address?.invalid && (address?.dirty || address?.touched)" class="alert">
+        <div *ngIf="address?.hasError('required')">
+          Пожалуйста, введите адрес.
+        </div>
+      </div>
+      <label for="address" class="visually-hidden">Адрес доставки</label>
+      <input
+        formControlName="address"
+        class="order__input"
+        type="text"
+        id="address"
+        placeholder="Адрес доставки"
+        required
+      />
+
+      <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="alert">
+        <div *ngIf="phone?.hasError('required')">
+          Пожалуйста, введите телефон.
+        </div>
+      </div>
+      <label for="phone" class="visually-hidden">Телефон</label>
+      <input
+        formControlName="phone"
+        class="order__input"
+        type="tel"
+        id="phone"
+        placeholder="Телефон"
+        required
+      />
+
+      <button class="order__button" type="submit">Оформить заказ</button>
+    </form>
+  </div>
+  <img class="order__image" ngSrc="/pizzzzza.png" width="410" height="454" alt="Аппетитная пицца" priority />
+</section>

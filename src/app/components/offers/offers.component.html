@@ -1,0 +1,17 @@
+<section class="section menu">
+  <h2 class="menu__title">Выберите свою любимую пиццу</h2>
+  @if (isLoaded) {
+    <ul class="menu__list">
+      @for (item of menu; track item.name; let i = $index) {
+        <li class="menu__item">
+          <img #image class="menu__item__img" [src]="item.img" [alt]="item.name" (click)="requestFullscreen(i)"/>
+          <h3 class="menu__item__name">{{ item.name }}</h3>
+          <p class="menu__item__ingredients">{{ item.ingredients }}</p>
+          <button  class="menu__item__button">В корзину</button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>Загружаем нашу лучшую пиццу...</p>
+  }
+</section>

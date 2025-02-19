@@ -1,0 +1,75 @@
+.section {
+  padding: 35px 35px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1200px) {
+  .section {
+    padding: 135px 0;
+  }
+}
+
+.menu__title {
+  text-align: center;
+  font-size: 34px;
+  color: var(--base-brown);
+}
+
+.menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+}
+@media screen and (min-width: 1200px) {
+  .menu__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.menu__item {
+  width: 284px;
+  padding: 27px 19px 14px 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 3px 15px var(--shadow-color);
+}
+
+.menu__item__img {
+  width: auto;
+  height: 152px;
+}
+
+.menu__item__name {
+  margin: 16px 0;
+  font-size: 17px;
+}
+
+.menu__item__ingredients {
+  margin-bottom: 19px;
+  flex-grow: 1;
+}
+
+.menu__item__button {
+  align-self: stretch;
+  min-width: 244px;
+  min-height: 52px;
+  background-color: var(--base-orange);
+  color: var(--base-text-color);
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.menu__item__button:hover,
+.menu__item__button:focus {
+  background-color: var(--base-brown);
+}
+
+/*# sourceMappingURL=offers.component.css.map */

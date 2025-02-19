@@ -1,20 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { FormComponent } from './components/form/form.component';
-import { OffersComponent } from './components/offers/offers.component';
-import { FeaturesComponent } from './components/features/features.component';
+import { Injectable } from '@angular/core';
+import { Offer } from '../models/offer.model';
+import { delay, Observable, of } from 'rxjs';
 
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FormComponent, OffersComponent, FeaturesComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent {
-  title = 'pizza-chef';
-
-  public menu = [{
+export class OffersService {
+  private _menu: Offer[] = [{
     id: 1,
     name: 'Мясная Делюкс',
     ingredients: 'Пепперони, лук, бекон, томатная паста, колбаски, перец, грибы, соус чили, ананасы',
@@ -55,4 +47,10 @@ export class AppComponent {
     ingredients: 'Сыр Джюгас, Сыр с плесенью, Сыр Моцарелла, Сыр секретный',
     img: '/menu/pizza_cheese.jpg'
   }]
+
+  constructor() { }
+
+  public getProducts(): Observable<Offer[]> {
+    return of(this._menu).pipe(delay(1000));
+  }
 }
