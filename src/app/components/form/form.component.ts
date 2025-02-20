@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf, NgOptimizedImage} from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {RestService} from '../../services/rest.service';
 
 @Component({
@@ -15,6 +16,7 @@ import {RestService} from '../../services/rest.service';
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
+  private _snackBar = inject(MatSnackBar);
   public form = new FormGroup({
     name: new FormControl<string>('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -48,10 +50,10 @@ export class FormComponent {
       this.rest.postForm(this.form.value)
         .subscribe({
           next: () => {
-            alert('Спасибо за заказ.');
+            this._snackBar.open('Спасибо за заказ.', 'OK', { duration: 3000 });
             this.form.reset();
           },
-          error: () => alert('Произошла ошибка.')
+          error: () => this._snackBar.open('Произошла ошибка.', 'OK', { duration: 3000 })
         });
     }
   }
