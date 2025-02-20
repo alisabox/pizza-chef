@@ -45,9 +45,9 @@ export class FormComponent {
 
   public onSubmit(): void {
     this.form.markAllAsTouched();
-
-    if (this.form.valid) {
-      this.rest.postForm(this.form.value)
+    const { name, phone, address } = this.form.value;
+    if (this.form.valid && name && phone && address) {
+      this.rest.postForm({ name, phone, address })
         .subscribe({
           next: () => {
             this._snackBar.open('Спасибо за заказ.', 'OK', { duration: 3000 });

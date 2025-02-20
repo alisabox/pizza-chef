@@ -1,6 +1,6 @@
 export type Order = {
-  id?: string | null;
-  name?: string | null;
-  address?: string | null;
-  phone?: string | null;
+  id?: string;
+  name: string;
+  address?: string;
+  phone?: string;
 }
